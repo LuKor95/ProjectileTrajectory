@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Rocket Flight 3000</string>
+    <string name="app_list_name">Súradnice dráhy letu</string>
+    <string name="app_animation_name">Animácia letu rakety</string>
+    <string name="app_graf_name">Graf závislostí výšky od času</string>
+    <string name="spped_name">Rýchlosť:</string>
+    <string name="angle_name">Uhol:</string>
+    <string name="list_of_coordinates">Súradnice</string>
+    <string name="animation">Animácia</string>
+    <string name="graph">Graf</string>
+    <string name="switch_calculation">Server</string>
+</resources>
