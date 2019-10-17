@@ -19,7 +19,7 @@ public class TrajectoryAnimation extends AppCompatActivity {
         Intent intent = getIntent();
         ArrayList<Coordinates> coordData = intent.getParcelableArrayListExtra("data");
 
-        AnimationView anim = new AnimationView(this, coordData);
-        setContentView(anim);
+        AnimationView animationView = new AnimationView(this, coordData);
+        setContentView(animationView);
     }
 }

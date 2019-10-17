@@ -4,14 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import java.util.ArrayList;
-
 import static java.lang.Math.round;
 
 public class TrajectoryGraph extends AppCompatActivity {
@@ -27,13 +24,12 @@ public class TrajectoryGraph extends AppCompatActivity {
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
 
         Intent intent = getIntent();
-        ArrayList<? extends Coordinates> coordData = intent.getParcelableArrayListExtra("data");
+        ArrayList<Coordinates> coordData = intent.getParcelableArrayListExtra("data");
 
         GraphView graph = findViewById(R.id.graph);
         graph.getGridLabelRenderer().setHorizontalAxisTitle("Čas [s]");
         graph.getGridLabelRenderer().setVerticalAxisTitle("Výška [m]");
-        graph.getGridLabelRenderer().setLabelVerticalWidth(30);
-//        Toast.makeText(this, String.valueOf(coordData.size()), Toast.LENGTH_LONG).show();
+        graph.getGridLabelRenderer().setLabelVerticalWidth(80);
 
         if (coordData != null) {
             for (Coordinates coords : coordData) {

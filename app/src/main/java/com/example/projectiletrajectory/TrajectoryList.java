@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
+import static java.lang.Math.round;
 
 public class TrajectoryList extends AppCompatActivity {
 
@@ -19,17 +20,26 @@ public class TrajectoryList extends AppCompatActivity {
         setContentView(R.layout.activity_trajectory_list);
 
         Intent intent = getIntent();
-        ArrayList<? extends Coordinates> coordData = intent.getParcelableArrayListExtra("data");
+        ArrayList<Coordinates> coordData = intent.getParcelableArrayListExtra("data");
 
-        ArrayList<String> coordText = new ArrayList<>();
-        if (coordData != null) {
-            for (Coordinates coords : coordData) {
-                coordText.add("t:"+coords.getTime()+", x:" + coords.getX()+", y:"+coords.getY());
-            }
-        }
-
-        ArrayAdapter adapter = new ArrayAdapter<>(this, R.layout.activity_listview, coordText);
+        ArrayAdapter adapter = new ArrayAdapter<>(this, R.layout.activity_listview, format(coordData));
         ListView listView = findViewById(R.id.mobile_list);
         listView.setAdapter(adapter);
+    }
+
+    private ArrayList<String> format(ArrayList<Coordinates> coordinates){
+        ArrayList<String> coordText = new ArrayList<>();
+        if (coordinates != null) {
+            for (Coordinates coords : coordinates) {
+                coordText.add("Čas: "+roundCoordinate(coords.getTime())+", X:" + roundCoordinate(coords.getX())+", Y:"+roundCoordinate(coords.getY()));
+            }
+        }
+        return coordText;
+    }
+
+    private String roundCoordinate(double coord){
+        double roundedCoord;
+        roundedCoord = round(coord * 1000.0) / 1000.0;
+        return String.valueOf(roundedCoord);
     }
 }
