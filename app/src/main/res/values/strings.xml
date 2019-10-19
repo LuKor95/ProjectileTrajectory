@@ -9,4 +9,6 @@
     <string name="animation">Animácia</string>
     <string name="graph">Graf</string>
     <string name="switch_calculation">Server</string>
+    <string name="initial_speed_value">0 km/h</string>
+    <string name="initial_angle_value">0°</string>
 </resources>

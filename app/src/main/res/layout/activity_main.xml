@@ -3,14 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="560dp"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/speedValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
+        android:text="@string/initial_speed_value"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -21,7 +22,7 @@
         android:id="@+id/angleValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
+        android:text="@string/initial_angle_value"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -29,41 +30,41 @@
         app:layout_constraintTop_toTopOf="@+id/angleText" />
 
     <Button
-        android:id="@+id/start"
+        android:id="@+id/list_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="openTrajectoryList"
         android:text="@string/list_of_coordinates"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/anim_button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switch1" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/anim_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="openTrajectoryAnimation"
         android:text="@string/animation"
-        app:layout_constraintBottom_toBottomOf="@+id/start"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintBottom_toBottomOf="@+id/list_button"
+        app:layout_constraintEnd_toStartOf="@+id/graph_button"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/start"
-        app:layout_constraintTop_toTopOf="@+id/start" />
+        app:layout_constraintStart_toEndOf="@+id/list_button"
+        app:layout_constraintTop_toTopOf="@+id/list_button" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/graph_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="openTrajectoryGraph"
         android:text="@string/graph"
-        app:layout_constraintBottom_toBottomOf="@+id/button"
+        app:layout_constraintBottom_toBottomOf="@+id/anim_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toTopOf="@+id/button" />
+        app:layout_constraintStart_toEndOf="@+id/anim_button"
+        app:layout_constraintTop_toTopOf="@+id/anim_button" />
 
     <Switch
         android:id="@+id/switch1"
@@ -71,7 +72,7 @@
         android:layout_height="wrap_content"
         android:text="@string/switch_calculation"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/start"
+        app:layout_constraintBottom_toTopOf="@+id/list_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/angle" />
