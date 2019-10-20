@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Rocket Flight 3000</string>
+    <string name="app_name">Rocket Flight</string>
     <string name="app_list_name">Súradnice dráhy letu</string>
     <string name="app_animation_name">Animácia letu rakety</string>
     <string name="app_graf_name">Graf závislostí výšky od času</string>

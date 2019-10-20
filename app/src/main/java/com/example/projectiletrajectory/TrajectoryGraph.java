@@ -6,9 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
-
 import java.util.ArrayList;
-
 import static java.lang.Math.round;
 
 public class TrajectoryGraph extends AppCompatActivity {
