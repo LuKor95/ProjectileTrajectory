@@ -1,12 +1,12 @@
 package com.example.projectiletrajectory;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
@@ -43,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
         coordData = new ArrayList<>();
@@ -105,19 +103,33 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        if (cm != null) {
+            return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
+        }
+        return false;
+    }
+
     public void choiseCompute() {
+        boolean testConnection = isNetworkConnected();
         if(speedValue > 0 && angleValue > 0) {
             if (aSwitch.isChecked()) {
-                computeServer();
+                if (testConnection){
+                    computeServer();
+                }else{
+                    computeLocal("Realizacia výpočtu: LOCAL (No internet)");
+                }
             } else {
-                computeLocal();
+                computeLocal("Realizacia výpočtu: LOCAL");
             }
         }else{
             setValueToButton(false);
         }
     }
 
-    public void computeLocal() {
+    public void computeLocal(String message) {
         double t = 0.1;
         double g = 9.81;
         double x;
@@ -139,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
             t += 0.1;
         }
         Log.d("Calculation", "Coordinates was computed locally.");
+        Toast.makeText(getApplicationContext(),message, Toast.LENGTH_SHORT).show();
         setValueToButton(true);
     }
 
@@ -166,6 +179,7 @@ public class MainActivity extends AppCompatActivity {
                                 coordData.add(coordinates);
                             }
                             Log.d("Calculation", "Coordinates was computed via server.");
+                            Toast.makeText(getApplicationContext(),"Realizacia výpočtu: SERVER", Toast.LENGTH_SHORT).show();
                             setValueToButton(true);
                         } catch (JSONException e) {
                             Log.e("JSONException", e.toString());
