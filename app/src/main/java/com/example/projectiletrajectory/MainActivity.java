@@ -29,6 +29,9 @@ import static java.lang.Math.cos;
 import static java.lang.Math.pow;
 import static java.lang.Math.sin;
 
+/**
+ * Created by Lukas Korciciak.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private static final String BaSEURL = "http://10.0.2.2:80";
